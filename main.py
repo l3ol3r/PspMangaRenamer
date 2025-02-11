@@ -14,6 +14,7 @@ chapter_rank = 4
 
 print('Files count:', filesCount)
 print('Start renaming...')
+os.makedirs('../Export')
 for i in folders:
     os.chdir(i)
     files = sorted(os.listdir(), key = lambda x: int(x.split('-')[0][1:]))
@@ -28,6 +29,7 @@ print('Complete!')
 
 os.chdir('..')
 
-print('Start archivation..')
+print('Start archiving..')
 shutil.make_archive('Manga', 'zip', 'Export/')
+shutil.rmtree('Export', ignore_errors=True)
 print('Complete!')
